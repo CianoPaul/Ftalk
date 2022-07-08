@@ -1,0 +1,128 @@
+{% extends 'templates.html' %}
+{% block content %}
+	<form method="POST">
+		<div class="container5">
+			<table class="contenttable">
+				<h1 class="rev"> Review </h1>
+
+			<center>
+				<table >
+					<thead>
+						<tr>
+							<th> Surname </th>
+							<th> First Name </th>
+							<th> Middle Name </th>
+							<th> Age </th>
+							<th> Address </th>
+							<th> Contact </th>
+							<th> Disease </th>
+							<th> Specify Disease </th>
+							<th> Plan </th>
+							<th> Total </th>
+						</tr>
+					</thead>
+					</center>
+					
+					{% for review in Item %}
+					<tbody>
+						<tr>
+							<td>{{review.sname}}</td>
+							<td>{{review.fname}}</td>
+							<td>{{review.mname}}</td>
+							<td>{{review.age}}</td>
+							<td>{{review.add}}</td>
+							<td>{{review.contact}}</td>
+							<td>{{review.disease}}</td>
+							<td>{{review.specifydisease}}</td>
+							<td>{{review.plan}}</td>
+							<td>{{review.total}}</td>
+							<td>
+								<a type='button' href="{% url 'edit' review.pk%}" > Edit</a> 
+							</td>
+						</tr>
+						{%endfor%}
+					</tbody>
+				</table>
+			</center>
+			<br>
+
+			<center>
+					<table >
+						<thead>
+							<tr class="table1">
+								<th> Intensity </th>
+								<th> Focus </th>
+
+							</tr>
+						</thead>
+						</center>
+						
+						{% for review in ExercisePlan %}
+						<tbody>
+							<tr>
+								<td>{{review.intensity}}</td>
+								<td>{{review.focus}}</td>
+							</tr>
+							{%endfor%}
+						</tbody>
+					</table>
+			</center>
+			<br>
+			<center>
+				<table >
+					<thead>
+						<tr >
+							<th> DietPlan </th>
+							<th> Trainer </th>
+							<th> Duration </th>
+						</tr>
+					</thead>
+					</center>
+					
+					{% for review in Program %}
+					<tbody>
+						<tr>
+							<td>{{review.DietPlan}}</td>
+							<td>{{review.Trainer}}</td>
+							<td>{{review.Duration}}</td>
+						</tr>
+						{%endfor%}
+					</tbody>
+				</table>
+
+
+<div class="title">
+	<p> Summary </p>
+</div>
+
+<form>
+	<center>
+<table >
+	<thead>
+		<tr >
+			<th> protein </th>
+			<th> gymbags </th>
+			<th> mat </th>
+			<th> others </th>
+			<th> weight loss</th>
+			<th> lockers </th>
+		</tr>
+	</thead>
+	</center>
+	
+	{% for review in Products %}
+	<tbody>
+		<tr>
+		<td>{{review.protein}}</td>
+		<td>{{review.gymbags}}</td>
+		<td>{{review.mat}}</td>
+		<td>{{review.others}}</td>
+		<td>{{review.loss}}</td>
+		<td>{{review.locker}}</td>
+		<td><a type='button' href="{% url 'removepage' review.pk %}" > Remove </a>
+		</td>
+	</tr>
+	{%endfor%}
+	</tbody>
+</table>
+{% endblock %}
